@@ -20,6 +20,8 @@ Installation Guide : https://medium.com/devops-dev/hadoop-component-installation
 
 
 Name: Rahul Patidar
+
 Linked: https://www.linkedin.com/in/rahul-patidar-603334163/
+
 Medium : https://medium.com/@patidar.rahul8392
 
