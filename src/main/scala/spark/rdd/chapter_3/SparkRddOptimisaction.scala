@@ -18,23 +18,35 @@ object SparkRddOptimisaction extends App {
   spark.sparkContext.setLogLevel("ERROR")
 
 //creating rdd with initial partition.
-  val rddFromFile = spark.sparkContext.textFile("/Users/rahul1.patidar/Desktop/SparkKt/SparkLearning/out/Test/Input/File1.csv",3)
+  val rddFromFile = spark.sparkContext.textFile("/Users/rahul/Desktop/SparkLearning/out/Test/Input/File1.csv",3)
   rddFromFile.collect().foreach(println)
 
-  // cache() and persist()
+  /*
+Using cache() and persist() methods, Spark provides an optimization mechanism to store the intermediate computation of an RDD, DataFrame, and Dataset
+so they can be reused in subsequent actions(reusing the RDD, Dataframe, and Dataset computation result’s).
+Both caching and persisting are used to save the Spark RDD, Dataframe, and Dataset’s. But, the difference is, RDD cache() method default saves it to 
+memory (MEMORY_ONLY) whereas persist() method is used to store it to the user-defined storage level.  
+*/
+
   rddFromFile.cache()
   rddFromFile.persist(MEMORY_ONLY)
-  rddFromFile.persist(MEMORY_ONLY_2)
+  
+ /* 
   rddFromFile.persist(MEMORY_AND_DISK)
-  rddFromFile.persist(MEMORY_AND_DISK_2)
   rddFromFile.persist(MEMORY_ONLY_SER)
-  rddFromFile.persist(MEMORY_ONLY_SER_2)
   rddFromFile.persist(MEMORY_AND_DISK_SER)
-  rddFromFile.persist(MEMORY_AND_DISK_SER_2)
   rddFromFile.persist(DISK_ONLY)
-  rddFromFile.persist(DISK_ONLY_2)
+  */
 
-  // broadcast() and Accumulator
+/*
+ Accumulators and broadcast variables both are spark shared variables.
+ Accumulators are special kind of variable which we basically use to update some data point across executors. 
+ Broadcast variables are read only variable which will be cached in all the executors in stead of shipping every time with the tasks. 
+ Basically, broadcast variables are used as lookup without any shuffle as each executor will keep a local copy of it, so no network I/O overhead 
+ involves here.
+
+*/
+  
   val rddBroadCase=spark.sparkContext.broadcast(rddFromFile)
 
   val accum = spark.sparkContext.longAccumulator("SumAccumulator")
