@@ -49,7 +49,16 @@ df.printSchema()
   println(df.rdd.partitions.size)
   println("----------------------------------------------------------------------------------------")
 
-  //Increase Number Of Partition Of dataframe
+/*
+Repartition: 
+
+Increase or decrease partitions.
+Repartition always involves a shuffle.
+Repartition works by creating new partitions and doing a full shuffle to move data around.
+Results in more or less equal sized partitions.
+Since a full shuffle takes place, repartition is less performant than coalesce.
+*/
+   
   println("Increase Number Of Partition Using repartition : ")
   val df_repartition=df.repartition(3)
   print("Number of partition using getNumPartitions  : ")
@@ -60,7 +69,19 @@ df.printSchema()
   println(df_repartition.rdd.partitions.size)
   println("----------------------------------------------------------------------------------------")
 
-  //Decrease Number Of Partition Of dataframe
+  /*
+  
+ Coalesce:
+ 
+Only decrease the number of partitions.
+Coalesce doesn’t involve a full shuffle.
+If the number of partitions is reduced from 5 to 2. Coalesce will not move data in 2 executors and move the data from the remaining 3 executors to the 
+2 executors. Thereby avoiding a full shuffle.
+Because of the above reason the partition size vary by a high degree.
+Since full shuffle is avoided, coalesce is more performant than repartition.
+Finally, When you call the repartition() function, Spark internally calls the coalesce function with shuffle parameter set to true.
+*/
+   
   println("Decrease Number Of Partition Using coalesce : ")
   val df_coalesce=df_repartition.coalesce(2)
   print("Number of partition using getNumPartitions  : ")
