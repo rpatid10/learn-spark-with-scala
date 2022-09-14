@@ -19,13 +19,32 @@ object SparkRddFromMultipleFiles extends App{
 
   //Create RDD from external Data source (.csv file)
 
-  val rddFromFile = spark.sparkContext.textFile("/Users/rahul1.patidar/Desktop/SparkKt/SparkLearning/out/Test/Input/File1.csv")
+  val rddFromFile = spark.sparkContext.textFile("/Users/rahul/Desktop/SparkLearning/out/Test/Input/File1.csv")
+  rddFromFile.collect().foreach(println)
+    .appName("SparkRddFromMultipleFiles")
+    .getOrCreate()
+  //print  only "Error" messages on terminal
+  spark.sparkContext.setLogLevel("ERROR")
+
+
+  //Create RDD from external Data source (.csv file)
+
+  val rddFromFile = spark.sparkContext.textFile("/Users/rahul/Desktop/SparkLearning/out/Test/Input/File1.csv")
   rddFromFile.collect().foreach(println)
 
 // Read multiple files and create Rdd.
   println("spark read csv files from a directory into RDD")
 val rddFrommultipleFile = spark.sparkContext
-  .textFile("/Users/rahul1.patidar/Desktop/SparkKt/SparkLearning/out/Test/Input/File1.csv,/Users/rahul1.patidar/Desktop/SparkKt/SparkLearning/out/Test/Input/File2.csv")
+  .textFile("/Users/rahul/Desktop/SparkLearning/out/Test/Input/File1.csv,/Users/rahul/Desktop/SparkLearning/out/Test/Input/File2.csv")
+  rddFrommultipleFile.collect().foreach(println)
+
+}
+
+
+// Read multiple files and create Rdd.
+  println("spark read csv files from a directory into RDD")
+val rddFrommultipleFile = spark.sparkContext
+  .textFile("/Users/rahul/Desktop/SparkLearning/out/Test/Input/File1.csv,/Users/rahul/Desktop/SparkLearning/out/Test/Input/File2.csv")
   rddFrommultipleFile.collect().foreach(println)
 
 }
