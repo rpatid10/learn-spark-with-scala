@@ -94,8 +94,8 @@ SparkSession’s object spark is the default variable available in spark-shell a
   rdd8.foreach(println)
   println("--------------------------------------------------------")
 // Saving Rdd As TextFile.
-  println("Saving file at : '//Users/rahul1.patidar/Desktop/SparkKt/SparkLearning/out/Test/OutPut'"
-             +rddFromSeq.saveAsTextFile("/Users/rahul1.patidar/Desktop/SparkKt/SparkLearning/out/Test/OutPut/"))
+  println("Saving file at : '/Users/rahul/Desktop/SparkLearning/out/Test/OutPut'"
+             +rddFromSeq.saveAsTextFile("/Users/rahul/Desktop/SparkLearning/out/Test/OutPut/"))
   println("--------------------------------------------------------")
   println("Initial partition of rdd :"+rddFromSeq.getNumPartitions)
   println("--------------------------------------------------------")
@@ -108,8 +108,8 @@ SparkSession’s object spark is the default variable available in spark-shell a
   println("--------------------------------------------------------")
 
 
-  println("Saving file at : '/Users/rahul1.patidar/Desktop/SparkKt/SparkLearning/out/Test/OutPut/repartition/'"
-    + rdd10.saveAsTextFile("/Users/rahul1.patidar/Desktop/SparkKt/SparkLearning/out/Test/OutPut/repartition/"))
+  println("Saving file at : '/Users/rahul/Desktop/SparkLearning/out/Test/OutPut/repartition/'"
+    + rdd10.saveAsTextFile("/Users/rahul/Desktop/SparkLearning/out/Test/OutPut/repartition/"))
   println("--------------------------------------------------------")
 /*
    we can also change the partition using coalesce,
