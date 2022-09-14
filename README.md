@@ -1,10 +1,8 @@
-# learn-spark-with-scala
+Spark is an open source framework focused on interactive queries, machine learning, and real-time workloads. It does not have its own storage system, but runs analytics on other storage systems like HDFS or other popular stores like Amazon Redshift, Amazon S3, Couchbase, Cassandra, and others.
 
-Spark is an open source framework focused on interactive query, machine learning, and real-time workloads. It does not have its own storage system, but runs analytics on other storage systems like HDFS, or other popular stores like Amazon Redshift, Amazon S3, Couchbase, Cassandra, and others.
+This repository contains all the codes that you need to start with Spark.
 
-This Repository Contains all the codes Which You need, to start with Spark.
-
-Please Learn Basics of Scala before Writing Spark code.You can refer below Links to Know More.
+Please learn the basics of Scala before writing Spark code. To learn more, click on the links below.
 
 
 Scala : https://medium.com/devops-dev/important-concepts-in-scala-3ac68615a5f2
